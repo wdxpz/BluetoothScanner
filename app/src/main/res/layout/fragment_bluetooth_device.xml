@@ -1,0 +1,93 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:tools="http://schemas.android.com/tools"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             tools:context="com.sw.tain.bluetoothscanner.BluetoothDeviceFragment">
+
+    <TextView
+        android:id="@+id/text_view_device_name_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:text="Device Name:"/>
+    <TextView
+        android:id="@+id/text_view_device_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:layout_toRightOf="@id/text_view_device_name_title"
+        android:layout_alignParentRight="true"/>
+
+    <TextView
+        android:id="@+id/text_view_device_address_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:layout_below="@id/text_view_device_name_title"
+        android:text="Device Address:"/>
+    <TextView
+        android:id="@+id/text_view_device_address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:layout_below="@id/text_view_device_name"
+        android:layout_alignParentRight="true"/>
+
+    <TextView
+        android:id="@+id/text_view_device_major_class_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:layout_below="@id/text_view_device_address_title"
+        android:text="Major Device Class:"/>
+    <TextView
+        android:id="@+id/text_view_device_major_class"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:layout_below="@id/text_view_device_major_class_title"
+        android:gravity="center"/>
+
+
+    <TextView
+        android:id="@+id/text_view_device_class_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:layout_below="@id/text_view_device_major_class"
+        android:text="Device Class:"/>
+    <TextView
+        android:id="@+id/text_view_device_class"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:layout_below="@id/text_view_device_class_title"
+        android:gravity="center"/>
+
+
+    <TextView
+        android:id="@+id/text_view_device_service_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:layout_below="@id/text_view_device_class"
+        android:text="Device Services:"/>
+    <TextView
+        android:id="@+id/text_view_device_service"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:layout_below="@id/text_view_device_service_title"
+        android:gravity="center"/>
+
+    <Button
+        android:id="@+id/button_connect_device"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="16dp"
+        android:text="Connect Device"/>
+</RelativeLayout>

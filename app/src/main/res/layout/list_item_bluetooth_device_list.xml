@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="?android:listSeparatorTextViewStyle">
+
+    <TextView
+        android:id="@+id/text_view_device_name_title_device_list"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:text="Device Name:"/>
+    <TextView
+        android:id="@+id/text_view_device_name_device_list"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:layout_toRightOf="@id/text_view_device_name_title_device_list"
+        android:hint="Device Name"/>
+
+    <TextView
+        android:id="@+id/text_view_device_network_type_device_list"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:layout_toRightOf="@id/text_view_device_name_device_list"
+        android:layout_alignParentRight="true"
+        android:hint="Network Type"
+        android:gravity="right"/>
+
+    <TextView
+        android:id="@+id/text_view_device_address_title_device_list"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:layout_below="@id/text_view_device_name_title_device_list"
+        android:text="Device Address:"/>
+    <TextView
+        android:id="@+id/text_view_device_address_device_list"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:layout_below="@id/text_view_device_name_device_list"
+        android:layout_alignParentRight="true"
+        android:gravity="center"
+        android:hint="Device Mac Address"/>
+
+    <TextView
+        android:id="@+id/text_view_device_major_class_title_device_list"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:layout_below="@id/text_view_device_address_title_device_list"
+        android:text="Major Device Class:"/>
+    <TextView
+        android:id="@+id/text_view_device_major_class_device_list"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:layout_below="@id/text_view_device_address_device_list"
+        android:gravity="center"
+        android:layout_alignParentRight="true"
+        android:hint="Device Class"/>
+
+</RelativeLayout>
