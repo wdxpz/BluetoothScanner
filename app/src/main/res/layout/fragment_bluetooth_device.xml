@@ -41,7 +41,7 @@
         android:layout_height="wrap_content"
         android:padding="16dp"
         android:layout_below="@id/text_view_device_address_title"
-        android:text="Major Device Class:"/>
+        android:text="Device Manufacture:"/>
     <TextView
         android:id="@+id/text_view_device_major_class"
         android:layout_width="match_parent"

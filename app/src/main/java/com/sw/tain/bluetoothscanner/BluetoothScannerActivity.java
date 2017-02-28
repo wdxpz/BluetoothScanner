@@ -11,7 +11,7 @@ import com.sw.tain.bluetoothscanner.utils.BTScanner;
 public class BluetoothScannerActivity extends AppCompatActivity implements BTScanner.OnBTDeviceFoundListner{
 
 
-    private BluetoothScannerFragment mFragment;
+    private BluetoothScanListFragment mFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,9 +19,13 @@ public class BluetoothScannerActivity extends AppCompatActivity implements BTSca
         setContentView(R.layout.activity_bluetooth_scanner);
 
         FragmentManager fm = getSupportFragmentManager();
-        mFragment = (BluetoothScannerFragment)fm.findFragmentById(R.id.fragment_scan_result_list);
+        mFragment = (BluetoothScanListFragment)fm.findFragmentById(R.id.fragment_scan_result_list);
+//        if(mFragment==null)
+//            mFragment = new BluetoothScannerFragment();
+
         if(mFragment==null)
-            mFragment = new BluetoothScannerFragment();
+            mFragment = new BluetoothScanListFragment();
+
         fm.beginTransaction()
                 .add(R.id.fragment_scan_result_list, mFragment)
                 .commit();

@@ -15,13 +15,19 @@ public class OADDevice{
     private boolean mIsAccessible;
 
     private String mName;
+    private String mManufacture;
     private String mMacAddress;
     private BluetoothDevice mBluetoothDevice;
     private BluetoothClass mBluetoothClass;
+    private String mDeviceServices;
 
     private static final HashMap<Integer, String> sMajorDeviceNameMap;
     private static final HashMap<Integer, String> sDeviceNameMap;
     private static final HashMap<Integer, String> SDeviceServiceNameMap;
+
+    public BluetoothDevice getDevice() {
+        return mBluetoothDevice;
+    }
 
     public static final class NetworkType{
         public static final int BLUETOOTH_DEVICE = 1;
@@ -32,6 +38,7 @@ public class OADDevice{
     }
 
     static{
+        //device major class
         sMajorDeviceNameMap = new HashMap<>();
         sMajorDeviceNameMap.put(BluetoothClass.Device.Major.AUDIO_VIDEO, "AUDIO_VIDEO");
         sMajorDeviceNameMap.put(BluetoothClass.Device.Major.COMPUTER, "COMPUTER");
@@ -45,6 +52,7 @@ public class OADDevice{
         sMajorDeviceNameMap.put(BluetoothClass.Device.Major.UNCATEGORIZED, "UNCATEGORIZED");
         sMajorDeviceNameMap.put(BluetoothClass.Device.Major.WEARABLE, "WEARABLE");
 
+        //Device class
         sDeviceNameMap = new HashMap<>();
         sDeviceNameMap.put(BluetoothClass.Device.AUDIO_VIDEO_CAMCORDER, "AUDIO_VIDEO_CAMCORDER");
         sDeviceNameMap.put(BluetoothClass.Device.AUDIO_VIDEO_CAR_AUDIO, "AUDIO_VIDEO_CAR_AUDIO");
@@ -103,6 +111,7 @@ public class OADDevice{
         sDeviceNameMap.put(BluetoothClass.Device.COMPUTER_LAPTOP, "COMPUTER_LAPTOP");
         sDeviceNameMap.put(BluetoothClass.Device.COMPUTER_LAPTOP, "COMPUTER_LAPTOP");
 
+        //device service
         SDeviceServiceNameMap = new HashMap<>();
         SDeviceServiceNameMap.put(BluetoothClass.Service.AUDIO, "AUDIO");
         SDeviceServiceNameMap.put(BluetoothClass.Service.CAPTURE, "CAPTURE");
@@ -156,6 +165,14 @@ public class OADDevice{
 
     public void setName(String name) {        mName = name;    }
 
+    public String getManufacture() {
+        return mManufacture;
+    }
+
+    public void setManufacture(String manufacture) {
+        mManufacture = manufacture;
+    }
+
     public String getDeviceMajorClass(){
         if(mBluetoothClass==null){
             return null;
@@ -182,7 +199,12 @@ public class OADDevice{
 
     }
 
+    public void setDeviceService(String services){ mDeviceServices = services;}
+
     public String getDeviceService(){
+        if(mNetworkType == NetworkType.BLUETOOTH_BLE_DEVICE){
+            return mDeviceServices;
+        }
         if(mBluetoothClass==null) return null;
 
         StringBuilder serviceStr=new StringBuilder("");

@@ -41,6 +41,7 @@ import com.sw.tain.bluetoothscanner.utils.SampleGattAttributes;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.UUID;
 
 /**
  * For a given BLE device, this Activity provides the user interface to connect, display data,
@@ -128,6 +129,36 @@ public class DeviceControlActivity extends AppCompatActivity {
                     if (mGattCharacteristics != null) {
                         final BluetoothGattCharacteristic characteristic =
                                 mGattCharacteristics.get(groupPosition).get(childPosition);
+
+                        //data characteristic:0000ffb2-0000-1000-8000-00805f9b34fb
+                        if(characteristic.getUuid().equals(
+                                UUID.fromString("0000ffb2-0000-1000-8000-00805f9b34fb"))){
+
+
+                            byte[] value = new byte[4];
+                            value[0] = -48;
+                            value[1] = (byte)255;
+                            value[2] = (byte)0;
+                            value[3] = (byte)255;
+
+                            characteristic.setValue(value);
+                            mBluetoothLeService.writeCharacteristic(characteristic);
+                        }
+
+                        //change mode characteristic:0000ffb2-0000-1000-8000-00805f9b34fb
+                        if(characteristic.getUuid().equals(
+                                UUID.fromString("0000ffb1-0000-1000-8000-00805f9b34fb"))){
+                            byte[] value2 = new byte[4];
+                            value2[0] = 1;
+                            value2[1] = 0;
+                            value2[2] = 3;
+                            value2[3] = 5;
+                            characteristic.setValue(value2);
+                            mBluetoothLeService.writeCharacteristic(characteristic);
+                        }
+
+
+
                         final int charaProp = characteristic.getProperties();
                         if ((charaProp | BluetoothGattCharacteristic.PROPERTY_READ) > 0) {
                             // If there is an active notification on a characteristic, clear

@@ -57,8 +57,6 @@ public class BluetoothScannerFragment extends Fragment{
         mRecyclerView =  (RecyclerView)inflater.inflate(R.layout.fragment_bluetooth_scanner, container, false);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
-
-
         mScanner = BTScanner.getInstance(getContext());
         if(mScanner==null) return mRecyclerView;
         mDeviceList = mScanner.getBluetoothDevices();
@@ -77,7 +75,7 @@ public class BluetoothScannerFragment extends Fragment{
 //                    }
 //                }, SCAN_PERIOD);
                 mScanner.initBluetooth();
-                mScanner.cancelDiscovery();
+//                mScanner.stopDiscovery();
                 mScanner.startDiscovery();
             }
         });
@@ -89,14 +87,13 @@ public class BluetoothScannerFragment extends Fragment{
     @Override
     public void onPause() {
         super.onPause();
-        mScanner.cancelDiscovery();
+        mScanner.stopDiscovery();
     }
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
 
         super.onCreateOptionsMenu(menu, inflater);
-
         inflater.inflate(R.menu.menu_bluetooth_scanner_fragment, menu);
 
     }
@@ -132,7 +129,7 @@ public class BluetoothScannerFragment extends Fragment{
                 public void onClick(View v) {
                     int pos = mRecyclerView.getLayoutManager().getPosition(v);
                     Intent intent = BluetoothDeviceActivity.newIntent(getActivity(), pos);
-                    mScanner.cancelDiscovery();
+                    mScanner.stopDiscovery();
                     startActivity(intent);
                 }
             });
@@ -141,7 +138,7 @@ public class BluetoothScannerFragment extends Fragment{
         public void BindDevice(OADDevice device){
             mTextViewDeviceName.setText(device.getName()!=null?device.getName():"unknown");
             mTextViewDeviceAdress.setText(device.getMacAddress()!=null?device.getMacAddress():"unknown");
-            mTextViewDeviceMajorClass.setText(device.getDeviceMajorClass()!=null?device.getDeviceMajorClass():"unknown");
+            mTextViewDeviceMajorClass.setText(device.getDeviceClasse()!=null?device.getDeviceClasse():"unknown");
             switch (device.getNetworkType()){
                 case OADDevice.NetworkType.BLUETOOTH_BONDED_DEVICE:
                     mTextViewDeviceNetworkType.setText("Bonded");

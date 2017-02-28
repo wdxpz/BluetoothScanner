@@ -63,7 +63,7 @@ public class BluetoothDeviceFragment extends Fragment {
         mDeviceAddress.setText(mOADDevice.getMacAddress()!=null?mOADDevice.getMacAddress():"Unkown");
 
         mDeviceMajorClass = (TextView)v.findViewById(R.id.text_view_device_major_class);
-        mDeviceMajorClass.setText(mOADDevice.getDeviceMajorClass()!=null?mOADDevice.getDeviceMajorClass():"Unkown");
+        mDeviceMajorClass.setText(mOADDevice.getManufacture()!=null?mOADDevice.getManufacture():"Unkown");
 
         mDeviceClass = (TextView)v.findViewById(R.id.text_view_device_class);
         mDeviceClass.setText(mOADDevice.getDeviceClasse()!=null?mOADDevice.getDeviceClasse():"Unkown");
